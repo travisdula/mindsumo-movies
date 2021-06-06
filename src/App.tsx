@@ -1,27 +1,54 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import './omdb_search'
+import { OMDbAPISearch } from './omdb_search';
+import { key } from './key.json';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+interface AppState {
+    query: string;
+    responseArray: Array<any>;
+}
+
+class App extends React.Component<{}, AppState> {
+    constructor(props: any) {
+        super(props);
+        this.state = {
+            query: "",
+            responseArray: [],
+        };
+    }
+
+    render() {
+        return (
+          <div className="App">
+            <header className="App-header">
+                <form className="query" onSubmit={this.handleSubmit.bind(this)}>
+                    <input onChange={this.handleChange.bind(this)} placeholder="search a movie" />
+                </form>
+                <div>{"Query: " + this.state.query}          </div>
+            {this.state.responseArray
+                .filter(res => res.Type === "movie")
+                .map(res => <div> {res.Title} </div>)}
+            </header>
+          </div>
+        );
+    }
+
+    handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+        const userQuery = event.target.value;
+        this.setState({
+            query: userQuery,
+        });
+    }
+
+    async handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+        event.preventDefault();
+        const response = await OMDbAPISearch(key, this.state.query)
+        console.log(response.Search);
+        this.setState({
+            query: this.state.query,
+            responseArray: response.Search
+        });
+    }
 }
 
 export default App;
