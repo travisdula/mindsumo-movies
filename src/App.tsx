@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import { OMDbAPISearch } from './omdb_search';
 import { key } from './key.json';
 
@@ -18,16 +17,22 @@ class App extends React.Component<{}, AppState> {
     }
 
     render() {
+        const movies = this.state.responseArray ? this.state.responseArray
+                .filter(res => res.Type === "movie")
+                .map(res => displayMovie(res))
+            : (<div> no results </div>);
         return (
           <div className="App">
-            <header className="App-header">
-                <form className="query" onSubmit={this.handleSubmit.bind(this)}>
-                    <input onChange={this.handleChange.bind(this)} placeholder="search a movie" />
-                </form>
-                <div>{"Query: " + this.state.query}          </div>
-            {this.state.responseArray
-                .filter(res => res.Type === "movie")
-                .map(res => <div> {res.Title} </div>)}
+            <header className="App-header flex justify-center ">
+                <div className="w-3/4 m-4">
+                    <div className="text-center">{"Query: " + this.state.query}</div>
+                    <form className="query text-center" onSubmit={this.handleSubmit.bind(this)}>
+                        <input onChange={this.handleChange.bind(this)} placeholder="search a movie" />
+                    </form>
+                    <div className="w-auto">
+                        { movies }
+                    </div>
+                </div>
             </header>
           </div>
         );
@@ -49,6 +54,15 @@ class App extends React.Component<{}, AppState> {
             responseArray: response.Search
         });
     }
+}
+
+function displayMovie(result: any) {
+    return (
+        <div key={result.Title + result.Year} className="movie flex flex-row">
+            <span className="title flex-grow"> {result.Title} </span>
+            <span className="year text-right flex-grow"> {result.Year} </span>
+        </div>
+    );
 }
 
 export default App;
