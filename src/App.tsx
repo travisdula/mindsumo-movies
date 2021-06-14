@@ -59,7 +59,7 @@ class App extends React.Component<{}, AppState> {
 
 function displayMovie(result: OMDbResult) {
     return (
-        <div key={result.imdbID} className="movie rounded-lg bg-opacity-25 bg-gray-400 lg:w-96 m-4 flex flex-row">
+        <div key={result.imdbID} className="movie rounded-lg bg-opacity-25 bg-gray-400 lg:w-96 m-4 mt-0 flex flex-row">
             <img className="w-32 rounded-lg" src={result.Poster} alt="no poster" />
             <span className="title m-2 max-w-prose text-lg text-gray-700 font-semibold flex-grow"> {result.Title} </span>
             <span className="year m-2 text-gray-600 text-right flex-grow"> {result.Year} </span>
