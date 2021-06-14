@@ -21,7 +21,7 @@ class App extends React.Component<{}, AppState> {
                 .map(res => displayMovie(res))
             : (<div> no results </div>);
         return (
-          <div className="App min-h-screen bg-gradient-to-b from-blue-200 via-purple-200 to-red-200">
+          <div className="App min-h-screen bg-gradient-to-b from-blue-200 to-purple-200">
             <header className="App-header flex flex-grow justify-center">
                 <div className="w-96 m-4">
                     {/*
@@ -59,9 +59,9 @@ class App extends React.Component<{}, AppState> {
 
 function displayMovie(result: OMDbResult) {
     return (
-        <div key={result.imdbID} className="movie rounded-lg bg-opacity-25 bg-gray-400 lg:w-96 m-4 mt-0 flex flex-row">
-            <img className="w-32 rounded-lg" src={result.Poster} alt="no poster" />
-            <span className="title m-2 max-w-prose text-lg text-gray-700 font-semibold flex-grow"> {result.Title} </span>
+        <div key={result.imdbID} className="movie rounded-lg bg-opacity-25 md:w-96 w-11/12 bg-gray-400 m-4 mt-0 flex flex-row">
+            <img className="w-32 flex-shrink-0 rounded-lg text-gray-500 italic text-center" src={result.Poster} alt="no poster" />
+            <span className="title m-2 text-lg text-gray-700 font-semibold"> {result.Title} </span>
             <span className="year m-2 text-gray-600 text-right flex-grow"> {result.Year} </span>
         </div>
     );
