@@ -21,18 +21,18 @@ class App extends React.Component<{}, AppState> {
                 .map(res => displayMovie(res))
             : (<div> no results </div>);
         return (
-          <div className="App h-screen bg-gray-400">
-            <div className="App-header flex flex-grow justify-center ">
-                <div className="w-3/4 m-6">
+          <div className="App min-h-screen bg-gradient-to-b from-blue-200 via-purple-200 to-red-200">
+            <header className="App-header flex flex-grow justify-center">
+                <div className="w-96 m-4">
                     {/*
                     <div className="text-center">{"Query: " + this.state.query}</div>
                     */}
                     <form className="query text-center" onSubmit={this.handleSubmit.bind(this)}>
-                        <input onChange={this.handleChange.bind(this)} placeholder="search a movie" />
+                        <input className="text-center rounded-lg" onChange={this.handleChange.bind(this)} placeholder="search a movie" />
                     </form>
                 </div>
-            </div>
-           <div className="w-auto">
+            </header>
+           <div className="w-auto flex flex-col items-center">
                { movies }
            </div>
           </div>
@@ -59,10 +59,10 @@ class App extends React.Component<{}, AppState> {
 
 function displayMovie(result: OMDbResult) {
     return (
-        <div key={result.Title + result.Year} className="movie bg-gray-700 m-2 flex flex-row">
-            <img className="w-32" src={result.Poster} alt="movie poster" />
-            <span className="title text-lg text-gray-50 font-semibold flex-grow"> {result.Title} </span>
-            <span className="year text-gray-100 text-right flex-grow"> {result.Year} </span>
+        <div key={result.imdbID} className="movie rounded-lg bg-opacity-25 bg-gray-400 w-96 m-4 flex flex-row">
+            <img className="w-32 rounded-lg" src={result.Poster} alt="no poster" />
+            <span className="title m-2 max-w-prose text-lg text-gray-700 font-semibold flex-grow"> {result.Title} </span>
+            <span className="year m-2 text-gray-600 text-right flex-grow"> {result.Year} </span>
         </div>
     );
 }
