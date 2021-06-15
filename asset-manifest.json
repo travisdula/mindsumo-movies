@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/mindsumo-movies/static/css/main.157f2ac4.chunk.css",
+    "main.js": "/mindsumo-movies/static/js/main.02896fee.chunk.js",
+    "main.js.map": "/mindsumo-movies/static/js/main.02896fee.chunk.js.map",
+    "runtime-main.js": "/mindsumo-movies/static/js/runtime-main.e79712e5.js",
+    "runtime-main.js.map": "/mindsumo-movies/static/js/runtime-main.e79712e5.js.map",
+    "static/js/2.5f0241fa.chunk.js": "/mindsumo-movies/static/js/2.5f0241fa.chunk.js",
+    "static/js/2.5f0241fa.chunk.js.map": "/mindsumo-movies/static/js/2.5f0241fa.chunk.js.map",
+    "static/js/3.1708a3e4.chunk.js": "/mindsumo-movies/static/js/3.1708a3e4.chunk.js",
+    "static/js/3.1708a3e4.chunk.js.map": "/mindsumo-movies/static/js/3.1708a3e4.chunk.js.map",
+    "index.html": "/mindsumo-movies/index.html",
+    "static/css/main.157f2ac4.chunk.css.map": "/mindsumo-movies/static/css/main.157f2ac4.chunk.css.map",
+    "static/js/2.5f0241fa.chunk.js.LICENSE.txt": "/mindsumo-movies/static/js/2.5f0241fa.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e79712e5.js",
+    "static/js/2.5f0241fa.chunk.js",
+    "static/css/main.157f2ac4.chunk.css",
+    "static/js/main.02896fee.chunk.js"
+  ]
+}
