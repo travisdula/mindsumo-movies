@@ -7,6 +7,7 @@ interface AppState {
     responseArray: Array<OMDbResult>;
     index: number;
     totalResults: number;
+    error: string;
 }
 
 class App extends React.Component<{}, AppState> {
@@ -17,10 +18,20 @@ class App extends React.Component<{}, AppState> {
             responseArray: [],
             index: 1,
             totalResults: 0,
+            error: "",
         };
     }
 
     render() {
+        const error = this.state.error !== ""
+            ? (
+            <div className="text-gray-200 text-2xl font-semibold bg-gray-700 text-center rounded-lg">
+                <div className="m-4">
+                    { this.state.error }
+                </div>
+            </div>
+            )
+            : null;
         const movies = this.state.responseArray ?
             this.state.responseArray
             .map(res => displayMovie(res))
@@ -48,6 +59,7 @@ class App extends React.Component<{}, AppState> {
                 </div>
             </header>
            <div className="w-auto flex flex-col items-center">
+               { error }
                { movies }
                { button }
            </div>
@@ -66,11 +78,22 @@ class App extends React.Component<{}, AppState> {
         event.preventDefault();
         const response = await OMDbAPISearch(key, this.state.query)
         console.log(response);
-        this.setState({
-            responseArray: response.Search,
-            index: 1,
-            totalResults: parseInt(response.totalResults),
-        });
+        if (response.Response === "False") {
+            this.setState({
+                query: "",
+                responseArray: [],
+                index: 1,
+                totalResults: 0,
+                error: response.Error,
+            })
+        } else {
+            this.setState({
+                responseArray: response.Search,
+                index: 1,
+                totalResults: parseInt(response.totalResults),
+                error: "",
+            });
+        }
     }
 
     async loadMore(_: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
