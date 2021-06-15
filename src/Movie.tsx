@@ -3,7 +3,6 @@ import { DetailedOMDbResponse, OMDbAPIGetByID } from './omdb_search'
 import { key  }from './key.json';
 
 export function Movie({ result }: any) {
-    console.log("res", result);
     const [expanded, setExpanded] = React.useState(false);
     const [moreInfo, setMoreInfo]
         : [DetailedOMDbResponse | undefined, React.Dispatch<DetailedOMDbResponse | undefined>]
@@ -26,7 +25,7 @@ export function Movie({ result }: any) {
                         <span className="title text-lg text-gray-700 text-left font-semibold flex-grow"> {result.Title} </span>
                         <span className="year text-gray-600 text-right flex-grow"> {result.Year} </span>
                     </div>
-                    { expanded && (<div className="text-sm"> {moreInfo && moreInfo.Plot} </div>) }
+                    { expanded && (<div className="text-xs"> {moreInfo && moreInfo.Plot} </div>) }
                 </div>
             </div>
         </button>
