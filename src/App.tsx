@@ -5,6 +5,8 @@ import { key } from './key.json';
 interface AppState {
     query: string;
     responseArray: Array<OMDbResult>;
+    index: number;
+    totalResults: number;
 }
 
 class App extends React.Component<{}, AppState> {
@@ -13,6 +15,8 @@ class App extends React.Component<{}, AppState> {
         this.state = {
             query: "",
             responseArray: [],
+            index: 1,
+            totalResults: 0,
         };
     }
 
@@ -20,6 +24,9 @@ class App extends React.Component<{}, AppState> {
         const movies = this.state.responseArray ? this.state.responseArray
                 .map(res => displayMovie(res))
             : (<div> no results </div>);
+        const button = this.state.responseArray.length === this.state.totalResults ?
+            null
+            : (<button id="loadMoreButton" onClick={this.loadMore.bind(this)}> Load More </button>);
         return (
           <div className="App min-h-screen bg-gradient-to-b from-blue-200 to-purple-200">
             <header className="App-header flex flex-grow justify-center">
@@ -28,12 +35,13 @@ class App extends React.Component<{}, AppState> {
                     <div className="text-center">{"Query: " + this.state.query}</div>
                     */}
                     <form className="query text-center" onSubmit={this.handleSubmit.bind(this)}>
-                        <input className="text-center bg-blue-50 rounded-lg" onChange={this.handleChange.bind(this)} placeholder="search a movie" />
+                        <input className="text-center text-2xl bg-blue-50 rounded-lg" onChange={this.handleChange.bind(this)} placeholder="search a movie" />
                     </form>
                 </div>
             </header>
            <div className="w-auto flex flex-col items-center">
                { movies }
+               { button }
            </div>
           </div>
         );
@@ -51,8 +59,18 @@ class App extends React.Component<{}, AppState> {
         const response = await OMDbAPISearch(key, this.state.query)
         console.log(response);
         this.setState({
-            query: this.state.query,
             responseArray: response.Search,
+            index: 1,
+            totalResults: parseInt(response.totalResults),
+        });
+    }
+
+    async loadMore(_: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+        const idx = this.state.index + 1;
+        const response = await OMDbAPISearch(key, this.state.query, idx);
+        this.setState({
+            responseArray: this.state.responseArray.concat(response.Search),
+            index: idx,
         });
     }
 }
@@ -66,5 +84,6 @@ function displayMovie(result: OMDbResult) {
         </div>
     );
 }
+
 
 export default App;
