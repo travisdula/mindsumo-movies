@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export interface OMDbResponse {
+    Error: string;
     Search: Array<OMDbResult>;
     totalResults: string;
     Response: string;
