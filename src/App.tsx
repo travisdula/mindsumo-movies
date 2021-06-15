@@ -40,7 +40,7 @@ class App extends React.Component<{}, AppState> {
             null
             : (
                 <button
-                    className="loadMoreButton bg-opacity-60 hover:bg-opacity-100 bg-blue-400 rounded-lg mb-2 text-xl font-medium h-12 w-36 "
+                    className="loadMoreButton transition duration-500 bg-opacity-60 hover:bg-opacity-100 bg-blue-400 rounded-lg mb-2 text-xl font-medium h-12 w-36 "
                     onClick={this.loadMore.bind(this)}>
                     Load More
                 </button>
@@ -108,11 +108,13 @@ class App extends React.Component<{}, AppState> {
 
 function displayMovie(result: OMDbResult) {
     return (
-        <div key={result.imdbID} className="movie rounded-lg bg-opacity-25 md:w-96 w-11/12 bg-gray-400 m-4 mt-0 flex flex-row">
+        <button 
+            key={result.imdbID}
+            className="movie transition duration-500 rounded-lg bg-opacity-25 hover:bg-opacity-100 md:w-96 w-11/12 bg-gray-400 m-4 mt-0 flex flex-row">
             <img className="w-32 flex-shrink-0 rounded-lg text-gray-500 italic text-center" src={result.Poster} alt="no poster" />
             <span className="title m-2 text-lg text-gray-700 font-semibold"> {result.Title} </span>
             <span className="year m-2 text-gray-600 text-right flex-grow"> {result.Year} </span>
-        </div>
+        </button>
     );
 }
 
