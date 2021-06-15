@@ -67,6 +67,7 @@ async function OMDbAPIGetByID(key: string, id: string): Promise<DetailedOMDbResp
         params: {
             apikey: key,
             i: id,
+            plot: "short",
         }
     })
     .then(res => {return res.data})
