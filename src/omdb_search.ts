@@ -14,8 +14,8 @@ export interface OMDbResult {
     Type: string;
 
 }
-async function OMDbAPISearch(key: string, title: string): Promise<OMDbResponse> {
-    return axios.get(`https://www.omdbapi.com/?type=movie&apikey=${key}&s=${title}`)
+async function OMDbAPISearch(key: string, title: string, page: Number = 1): Promise<OMDbResponse> {
+    return axios.get(`https://www.omdbapi.com/?type=movie&apikey=${key}&s=${title}&page=${page}`)
     .then(res => {return res.data})
     .catch(err => console.error(err));
 }
