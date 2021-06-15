@@ -21,12 +21,20 @@ class App extends React.Component<{}, AppState> {
     }
 
     render() {
-        const movies = this.state.responseArray ? this.state.responseArray
-                .map(res => displayMovie(res))
+        const movies = this.state.responseArray ?
+            this.state.responseArray
+            .map(res => displayMovie(res))
             : (<div> no results </div>);
         const button = this.state.responseArray.length === this.state.totalResults ?
             null
-            : (<button id="loadMoreButton" onClick={this.loadMore.bind(this)}> Load More </button>);
+            : (
+                <button
+                    className="loadMoreButton bg-opacity-60 hover:bg-opacity-100 bg-blue-400 rounded-lg mb-2 text-xl font-medium h-12 w-36 "
+                    onClick={this.loadMore.bind(this)}>
+                    Load More
+                </button>
+            );
+
         return (
           <div className="App min-h-screen bg-gradient-to-b from-blue-200 to-purple-200">
             <header className="App-header flex flex-grow justify-center">
