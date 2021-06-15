@@ -78,7 +78,6 @@ class App extends React.Component<{}, AppState> {
     async handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
         const response = await OMDbAPISearch(key, this.state.query)
-        console.log(response);
         if (response.Response === "False") {
             this.setState({
                 query: "",
