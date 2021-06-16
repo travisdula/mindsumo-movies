@@ -1,5 +1,5 @@
 import React from 'react';
-import { OMDbAPISearch, OMDbSearchResult } from './omdb_search';
+import { OMDbAPISearch, OMDbSearchResult, DetailedOMDbResponse, OMDbAPIGetByID } from './omdb_search';
 import { key } from './key.json';
 import { Movie } from './Movie';
 
@@ -9,6 +9,8 @@ interface AppState {
     index: number;
     totalResults: number;
     error: string;
+    expandedMovie: string | undefined;
+    moreInfo: DetailedOMDbResponse | undefined;
 }
 
 class App extends React.Component<{}, AppState> {
@@ -20,6 +22,8 @@ class App extends React.Component<{}, AppState> {
             index: 1,
             totalResults: 0,
             error: "",
+            expandedMovie: undefined,
+            moreInfo: undefined,
         };
     }
 
@@ -33,10 +37,23 @@ class App extends React.Component<{}, AppState> {
             </div>
             )
             : null;
-        const movies = this.state.responseArray ?
-            this.state.responseArray
-            .map(res => (<Movie result={res}/>))
-            : (<div> no results </div>);
+        const movies = this.state.responseArray
+            .map(res => (
+                <Movie
+                    key={res.imdbID}
+                    result={res}
+                    expanded={res.imdbID===this.state.expandedMovie}
+                    moreInfo={this.state.moreInfo}
+                    onClick={async () =>
+                        {
+                            this.setState({
+                                expandedMovie: res.imdbID,
+                                moreInfo: await OMDbAPIGetByID(key, res.imdbID),
+                            });
+                        }
+                    }
+                />
+            ));
         const button = this.state.responseArray.length === this.state.totalResults ?
             null
             : (
