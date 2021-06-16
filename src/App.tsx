@@ -47,8 +47,10 @@ class App extends React.Component<{}, AppState> {
                     onClick={async () =>
                         {
                             this.setState({
-                                expandedMovie: res.imdbID,
-                                moreInfo: await OMDbAPIGetByID(key, res.imdbID),
+                                expandedMovie: res.imdbID === this.state.expandedMovie ? undefined : res.imdbID,
+                                moreInfo: res.imdbID === this.state.moreInfo?.imdbID
+                                    ? this.state.moreInfo
+                                    : await OMDbAPIGetByID(key, res.imdbID),
                             });
                         }
                     }
