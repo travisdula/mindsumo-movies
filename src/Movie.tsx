@@ -16,7 +16,7 @@ export function Movie(props: any) {
     return (
         <button 
             onClick={props.onClick}
-            className="shadow-md transition duration-500 rounded-lg bg-opacity-25 hover:bg-opacity-100 max-w-4xl md:w-1/2 w-11/12 bg-gray-400 m-4 mt-0 ">
+            className="shadow-md transition duration-300 rounded-lg bg-opacity-25 hover:bg-opacity-100 max-w-4xl md:w-1/2 w-11/12 bg-gray-400 m-4 mt-0 ">
             <div className="flex flex-col">
                 <div className="flex flew-row flex-auto">
                     <img className="w-20 flex-shrink-0 rounded-lg text-gray-500 italic text-center" src={result.Poster} alt="no poster" />
