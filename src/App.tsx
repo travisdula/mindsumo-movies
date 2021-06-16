@@ -101,18 +101,21 @@ class App extends React.Component<{}, AppState> {
             this.setState({
                 query: "",
                 responseArray: [],
-                index: 1,
                 totalResults: 0,
                 error: response.Error,
             })
         } else {
             this.setState({
                 responseArray: response.Search,
-                index: 1,
                 totalResults: parseInt(response.totalResults),
                 error: "",
             });
         }
+        this.setState({
+            expandedMovie: undefined,
+            moreInfo: undefined,
+            index: 1,
+        })
     }
 
     async loadMore(_: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
