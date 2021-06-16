@@ -21,8 +21,6 @@ export function Movie(props: any) {
                 <div className="flex flew-row flex-auto">
                     <img className="w-20 flex-shrink-0 rounded-lg text-gray-500 italic text-center" src={result.Poster} alt="no poster" />
                     <div className="flex flex-col w-full m-2">
-                        <div> { result.imdbID } </div>
-                        <div> { moreInfo && moreInfo.imdbID } </div>
                         <div className="flex flex-row">
                             <span className="title text-xl text-gray-700 text-left font-semibold mr-2"> {result.Title} </span>
                             <span className="year text-gray-600 text-right flex-grow"> {(moreInfo && expanded) ? moreInfo.Released : result.Year} </span>
