@@ -23,7 +23,7 @@ export function Movie(props: any) {
                     <div className="flex flex-col w-full m-2">
                         <div className="flex flex-row">
                             <span className="title text-xl text-gray-700 text-left font-semibold mr-2"> {result.Title} </span>
-                            <span className="year text-gray-600 text-right flex-grow"> {(moreInfo && expanded) ? moreInfo.Released : result.Year} </span>
+                            <span className="year text-gray-600 text-right flex-grow"> {(expanded && moreInfo?.Released !== "N/A") ? moreInfo.Released : result.Year} </span>
                         </div>
                         {
                             expanded &&
@@ -48,6 +48,9 @@ export function Movie(props: any) {
 }
 
 function filterNA(prop: string, propertyName: string = ""): JSX.Element {
-    return (<span className={prop === "N/A" ? "italic" : ""}> {prop === "N/A" ? propertyName + " not found" : prop} </span>)
+    return (
+        <span className={prop === "N/A" ? "italic" : ""}>
+            {prop === "N/A" ? propertyName + " not found" : prop}
+        </span>)
         
 }
