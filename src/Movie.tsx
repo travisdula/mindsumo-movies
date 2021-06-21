@@ -1,15 +1,4 @@
-import React from 'react';
-//import { DetailedOMDbResponse, OMDbAPIGetByID } from './omdb_search'
-//import { key }from './key.json';
-
 export function Movie(props: any) {
-    /*const [expanded, setExpanded] = React.useState(false);
-    const [moreInfo, setMoreInfo]
-        : [DetailedOMDbResponse | undefined, React.Dispatch<DetailedOMDbResponse | undefined>]
-        = React.useState();*/
-    /*if (moreInfo?.imdbID !== result.imdbID) {
-        setExpanded(false);
-    }*/
     const result = props.result;
     const expanded = props.expanded;
     const moreInfo = props.moreInfo;
