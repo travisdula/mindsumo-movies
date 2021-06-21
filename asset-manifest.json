@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/mindsumo-movies/static/css/main.95ca99e0.chunk.css",
-    "main.js": "/mindsumo-movies/static/js/main.6deda05a.chunk.js",
-    "main.js.map": "/mindsumo-movies/static/js/main.6deda05a.chunk.js.map",
+    "main.js": "/mindsumo-movies/static/js/main.64b73c3b.chunk.js",
+    "main.js.map": "/mindsumo-movies/static/js/main.64b73c3b.chunk.js.map",
     "runtime-main.js": "/mindsumo-movies/static/js/runtime-main.e79712e5.js",
     "runtime-main.js.map": "/mindsumo-movies/static/js/runtime-main.e79712e5.js.map",
-    "static/js/2.c9030729.chunk.js": "/mindsumo-movies/static/js/2.c9030729.chunk.js",
-    "static/js/2.c9030729.chunk.js.map": "/mindsumo-movies/static/js/2.c9030729.chunk.js.map",
+    "static/js/2.deefa705.chunk.js": "/mindsumo-movies/static/js/2.deefa705.chunk.js",
+    "static/js/2.deefa705.chunk.js.map": "/mindsumo-movies/static/js/2.deefa705.chunk.js.map",
     "static/js/3.1708a3e4.chunk.js": "/mindsumo-movies/static/js/3.1708a3e4.chunk.js",
     "static/js/3.1708a3e4.chunk.js.map": "/mindsumo-movies/static/js/3.1708a3e4.chunk.js.map",
     "index.html": "/mindsumo-movies/index.html",
     "static/css/main.95ca99e0.chunk.css.map": "/mindsumo-movies/static/css/main.95ca99e0.chunk.css.map",
-    "static/js/2.c9030729.chunk.js.LICENSE.txt": "/mindsumo-movies/static/js/2.c9030729.chunk.js.LICENSE.txt"
+    "static/js/2.deefa705.chunk.js.LICENSE.txt": "/mindsumo-movies/static/js/2.deefa705.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.e79712e5.js",
-    "static/js/2.c9030729.chunk.js",
+    "static/js/2.deefa705.chunk.js",
     "static/css/main.95ca99e0.chunk.css",
-    "static/js/main.6deda05a.chunk.js"
+    "static/js/main.64b73c3b.chunk.js"
   ]
 }
