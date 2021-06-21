@@ -54,7 +54,7 @@ async function OMDbAPISearch(key: string, title: string, page: Number = 1): Prom
         params: {
             type: "movie",
             apikey: key,
-            s: title,
+            s: title.trim(),
             page: page,
         }
     })
