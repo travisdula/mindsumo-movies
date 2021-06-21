@@ -29,14 +29,14 @@ class App extends React.Component<{}, AppState> {
 
     render() {
         const error = this.state.error !== ""
-            ? (
-            <div className="text-gray-200 text-2xl font-semibold bg-gray-700 text-center rounded-lg">
+            ?
+            (<div className="text-gray-200 text-2xl font-semibold bg-gray-700 text-center rounded-lg">
                 <div className="m-4">
                     { this.state.error }
                 </div>
-            </div>
-            )
+            </div>)
             : null;
+
         const movies = this.state.responseArray
             .map(res => (
                 <Movie
@@ -56,6 +56,7 @@ class App extends React.Component<{}, AppState> {
                     }
                 />
             ));
+
         const button = this.state.responseArray.length === this.state.totalResults ?
             null
             : (
@@ -70,9 +71,6 @@ class App extends React.Component<{}, AppState> {
           <div className="App min-h-screen bg-gradient-to-b from-blue-200 to-purple-200">
             <header className="App-header flex flex-grow justify-center">
                 <div className="w-96 m-4">
-                    {/*
-                    <div className="text-center">{"Query: " + this.state.query}</div>
-                    */}
                     <form className="query text-center" onSubmit={this.handleSubmit.bind(this)}>
                         <input className="text-center text-2xl bg-blue-50 rounded-lg" onChange={this.handleChange.bind(this)} placeholder="search a movie" />
                     </form>
@@ -127,9 +125,5 @@ class App extends React.Component<{}, AppState> {
         });
     }
 }
-
-
-
-
 
 export default App;
