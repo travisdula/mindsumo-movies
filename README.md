@@ -5,7 +5,7 @@ I created such a web app, using ReactJS and TailwindCSS, which merited me admiss
 
 # See it in action!
 
-[trvs.me/mindsumo-movies](https://trvs.me/mindsumo-movies)
+It's no longer up, sorry!
 
 # To see what this repo looked like when I submitted it...
 
